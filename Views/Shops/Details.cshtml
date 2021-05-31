@@ -1,0 +1,44 @@
+﻿@model PricesComparationWeb.Models.Shop
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Shop</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <p>@Html.LabelFor(p => p.Address.State): @Html.DisplayFor(model => model.Address.State)</p>
+    <p>@Html.LabelFor(p => p.Address.City): @Html.DisplayFor(model => model.Address.City)</p>
+    <p>@Html.LabelFor(p => p.Address.District): @Html.DisplayFor(model => model.Address.District)</p>
+    <p>@Html.LabelFor(p => p.Address.Street): @Html.DisplayFor(model => model.Address.Street)</p>
+</div>
+
+<div class="container-fluid">
+    @foreach (var p in Model.Products)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+            <a>
+                <span class="glyphicon glyphicon-ok text-primary"></span>
+                <h3>@Html.DisplayFor(model => p.Product.Brand)</h3>
+                <h3>@Html.DisplayFor(model => p.Product.Name)</h3>
+                <h5>@Html.DisplayFor(model => p.Price)</h5>
+                <h5>@Html.DisplayFor(model => p.PriceDate)</h5>
+            </a>
+        </div>
+    }
+</div>
+<div>
+    <a asp-controller="ProductShops" asp-action="Create" class="btn btn-dark">Novo Produto</a>
+    <a asp-action="Edit" class="btn btn-dark" asp-route-id="@Model.Id">Edit</a>
+    <a asp-action="Index" class="btn btn-dark">Voltar</a>
+</div>

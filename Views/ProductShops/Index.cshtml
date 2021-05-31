@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PricesComparationWeb.Models.ProductShop>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="container-fluid">
+    @foreach (var p in Model)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+            <a asp-controller="ProductShops" asp-action="Details" asp-route-id="@p.Id">
+                <span class="glyphicon glyphicon-ok text-primary"></span>
+                <h4>@Html.DisplayFor(model => p.Product.Brand.Name)</h4>
+                <h4>@Html.DisplayFor(model => p.Product.Name)</h4>
+                <h5>@Html.DisplayFor(model => p.Price)</h5>
+            </a>
+        </div>
+    }
+</div>
